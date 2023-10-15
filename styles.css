@@ -32,6 +32,8 @@ body {
 h1 {
     font-weight: 600;
     font-size: 3rem;
+    line-height: 3.5rem;
+    margin-bottom: 1rem;
 }
 
 h2 {
@@ -114,7 +116,7 @@ section {
 }
 
 .header {
-    height: var(--header-heigth);
+    height: 100vh;
     width: 100%;
     background-image: url(./img/linia.jpg);
     background-repeat: no-repeat;
@@ -127,7 +129,7 @@ section {
     position: relative;
     flex-direction: column;
     background-size: cover;
-    height: var(--header-heigth);
+    height: 100%;
 }
 
 .header-nav {
@@ -525,6 +527,11 @@ svg {
     .header-nav {
         display: flex;
     }
+
+    .header {
+        height: var(--header-heigth);
+    }
+    
     
     .header-logo {
         font-size: 8rem;
@@ -536,7 +543,7 @@ svg {
     }
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 310px) {
 
     .header-logo {
         font-size: 7rem;
@@ -544,6 +551,7 @@ svg {
 
     h1 {
         font-size: 5rem;
+        line-height: normal;
     }
 
     h2 {
@@ -588,7 +596,7 @@ svg {
         flex-direction: row;
     }
     
-
+ 
     .card-descr {
         display: flex;
         flex-direction: column;
