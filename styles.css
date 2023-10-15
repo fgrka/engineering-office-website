@@ -538,11 +538,6 @@ svg {
 
 @media screen and (min-width: 300px) {
 
-    .header-buttons {
-        flex-direction: row;
-    }
-    
-
     .header-logo {
         font-size: 7rem;
     }
@@ -591,8 +586,8 @@ svg {
 
     .header-buttons {
         flex-direction: row;
-
     }
+    
 
     .card-descr {
         display: flex;
