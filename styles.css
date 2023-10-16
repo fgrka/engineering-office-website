@@ -9,6 +9,7 @@
 --col3: #ffa62b;
 --col4: #ede7e3;
 --col5: #16697a;
+--col6: rgb(236, 234, 234);
 }
 
 html {
@@ -85,7 +86,7 @@ button {
     color: var(--col5);
 }
 
-section:not(.numbers), .header-wrapper {
+section:not(.numbers, .advantages), .header-wrapper {
     max-width: 120rem;
     padding-left: 4rem;
     padding-right: 4rem;
@@ -169,6 +170,8 @@ section {
 
 .header-title {
     margin-bottom: 3rem;
+    margin-left: 2rem;
+ 
 }
 
 .header-buttons {
@@ -209,25 +212,38 @@ section {
 .about-descr {
     max-width: 100rem;
     margin: 0 auto;
+
 }
 
 .about-descr>p {
     text-align: center;
-    white-space: pre-line;
+    font-size: 1.8rem;
 }
 
 .section-title {
     display: block;
     font-size: 5rem;
     text-align: center;
-    padding-top: 5rem;
     min-width: fit-content;
-    position: relative;
-    padding: 2rem;
-    margin-bottom: 2rem;
+
+    margin-bottom: 5rem;
     margin-top: 5rem;
-    text-decoration: underline;
-    text-underline-offset: 1rem;
+}
+
+.about-title:after, .offer-title:after, .portfolio-title:after{
+    content: '';
+    background: var(--col3); 
+    width: 14rem;
+    height: 11px;
+    border-radius: 20px;
+    display: block;
+    margin-top:-19px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.portfolio-title:after {
+    width: 20rem;
 }
 
 .offer {
@@ -254,7 +270,7 @@ section {
     margin-left: 2rem;
     margin-bottom: 2rem;
     padding: 3rem 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.137) 0px 3px 6px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     border-radius: 2rem;
 }
 
@@ -279,11 +295,29 @@ section {
 
 .portfolio {
     display: block;
+    text-align: center;
     position: relative;
-    padding-bottom: 1rem;
-    min-height: 50rem;
+    padding-bottom: 3rem;
+ 
  
 }
+
+.portfolio-button {
+    width: 20rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+
+.slider-container {
+    display: block;
+    position: relative;
+    max-width: 120rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+
 
 .slider-wrap {
     display: block;
@@ -292,9 +326,7 @@ section {
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10rem;
-    margin-top:2rem;
- 
+    
 }
 
 .slider {
@@ -305,30 +337,29 @@ section {
     width: max-content;
     transition: all 1s ease;
     z-index: 0;
+
 }
 
 .card {
     display: flex;
     max-width: 90rem;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    min-width: 15rem;
     width: 60vw;
 }
 
-.slider-wrap::before {
+/* .slider-container::before {
     content: "";
     position: absolute;
-    width: 60vw;
+    width:  100%;
     max-width: 90rem;
-    height: 40rem;
+    height: 100%;
     border-radius: 2rem;
     background-color:#81b4be62;
     z-index: -1;
-    transform: translateY(8rem);
     box-shadow: rgba(0, 0, 0, 0.137) 0px 3px 6px;
-}
+} */
 
 .card-img {
     height: 13rem;
@@ -336,10 +367,13 @@ section {
 }
 
 .card-img > img {
+    display: flex;
     height: 100%;
+    min-width: 17rem;
+    width: 100%;
     object-fit: cover;
     border-radius: 2rem;
-    box-shadow: rgba(0, 0, 0, 0.171) 0px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .card-descr {
@@ -348,7 +382,6 @@ section {
     padding: 2rem;
     text-align: center;
     min-height: 32rem;
-
 }
 
 .nav-btn {
@@ -356,25 +389,25 @@ section {
     font-size: 4rem;
     color: var(--col1);
     position: absolute;
-    border: 3px solid var(--col1);
+    /* border: 3px solid var(--col1); */
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
     cursor: pointer;
     text-align: center;
     z-index: 9999;
-    box-shadow: rgba(0, 0, 0, 0.062) 0px 3px;
+    /* box-shadow: rgba(0, 0, 0, 0.062) 0px 3px; */
 
 }
 
 .left {
-    left: 30%;
-    bottom: 2rem;
+    left: -2rem;
+    top: 50%;
 }
 
 .right {
-    right: 30%;
-    bottom: 2rem;
+    right: -2rem;
+    top:50%;
 }
 
 
@@ -383,10 +416,6 @@ section {
     transform: translateY(-1.8rem);
 }
  
-.nav-btn:hover {
-    background-color: rgba(91, 175, 179, 0.151);
-}
-
 #count-coffee::before {
     content: ">"
 }
@@ -395,9 +424,15 @@ section {
 .numbers {
     display: block;
     margin: auto;
-    min-height: 18rem;
+    min-height: 26rem;
     margin-top: 5rem;
     background-color: var(--col1)
+}
+
+.numbers-title {
+  text-align: center;
+  padding: 2rem;
+  letter-spacing: 0.4rem;
 }
 
 .numbers-wrap {
@@ -406,8 +441,6 @@ section {
     height: 100%;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center; */
-
 }
 
 .count {
@@ -439,6 +472,49 @@ svg {
 }
 
 
+
+/*ADVANTAGES*/
+
+
+.advantages {
+    display: block;
+    margin: auto;
+    height: 30rem;
+    margin-top: 5rem;
+    background-color: var(--col6)
+}
+
+.advantages-wrap {
+    display: grid;
+    max-width: 120rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    margin: 0 auto;
+    height: 100%; 
+}
+
+.adventages-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.advantages-img {
+    display: block;
+    margin:  0 auto;
+    height: 5rem;
+}
+
+.advantages-card > p {
+    display: block;
+    font-size: 1.8rem;
+    padding: 2rem 0;
+}
+
+
+
 /* FOOTER */
 
 .footer-wrap {
@@ -452,8 +528,7 @@ svg {
 .footer-main {
     display: block;
     width: 100%;
-    background-color: rgb(236, 234, 234);
-
+    background-color: var(--col6);
 }
 
 .footer-left {
@@ -523,27 +598,13 @@ svg {
     margin-right: 0;
 }
 
-@media screen and (min-width: 900px) {
-    .header-nav {
-        display: flex;
-    }
 
-    .header {
-        height: var(--header-heigth);
+@media screen and (min-width: 320px) {
+
+    .portfolio-button {
+        width: 25rem;
     }
     
-    
-    .header-logo {
-        font-size: 8rem;
-        transform: translateY(var(--y));
-    }
-
-    h1 {
-        font-size: 5rem;
-    }
-}
-
-@media screen and (min-width: 310px) {
 
     .header-logo {
         font-size: 7rem;
@@ -571,12 +632,12 @@ svg {
     .about-descr>p {
         text-indent: 4rem;
         text-align: justify;
-        white-space: pre-line;
+      
     }
 
     .card-img {
         height: 15rem;
-       }
+    }
 
        .left {
         left: 2%;
@@ -601,7 +662,7 @@ svg {
         display: flex;
         flex-direction: column;
         padding: 2rem;
-        text-align: center;
+
         min-height: 20rem;
     
     }
@@ -616,21 +677,20 @@ svg {
     }
     
     .card-img {
-        height: 20rem;
+        height: 18rem;
+        min-width: 16rem;
        }
-
-    .left {
-        left: 5%;
-    }
-    
-    .right {
-        right: 5%;
-    }
     
 }
 
 
 @media screen and (min-width: 550px) {
+
+    .advantages-wrap {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: none;
+    }
+    
     .card-img {
         height: 25rem;
        }
@@ -639,27 +699,39 @@ svg {
         height: 35rem;
         transform: translateY(12rem);
     }
-    
-    .left {
-        left: 10%;
-    }
-    
-    .right {
-        right: 10%;
-    }
 
     .footer-wrap {
         flex-direction: row;
     }
 }
 
-@media screen and (min-width: 910px) {
-    .left {
-        left: 14%;
+
+@media screen and (min-width: 900px) {
+    .header-nav {
+        display: flex;
+    }
+
+    .header {
+        height: var(--header-heigth);
     }
     
-    .right {
-        right: 8%;
+    
+    .header-logo {
+        font-size: 8rem;
+        transform: translateY(var(--y));
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (min-width: 910px) {
+    
+    .advantages-img {
+        display: block;
+        margin:  0 auto;
+        height: 8rem;
     }
 
     .card {
@@ -680,24 +752,5 @@ svg {
         margin-top:5rem;
     }
 
-    .slider-wrap::before {
-        content: "";
-        position: absolute;
-        width: 60vw;
-        max-width: 90rem;
-        height: 35rem;
-        border-radius: 2rem;
-        background-color:#81b4be62;
-        transform: translateX(5rem) translateY(-2rem);
-    }
 }
  
-@media screen and (min-width: 1250px) {
-    .left {
-        left: 8%;
-    }
-    
-    .right {
-        right: 2%;
-    }
-}
