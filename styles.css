@@ -274,8 +274,11 @@ section {
     border-radius: 2rem;
 }
 
-.offer-descr > h3 { 
-   line-height: 4rem;
+.offer-descr > h4 { 
+ 
+   line-height: 3rem;
+   margin-bottom: 1rem;
+
 }
 
 .offer-img {
