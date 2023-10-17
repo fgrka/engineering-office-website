@@ -28,23 +28,24 @@ body {
     margin: 0px;
     box-sizing: border-box;
     position: relative;
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 h1 {
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 2.6rem;
     line-height: 3.5rem;
     margin-bottom: 1rem;
 }
 
 h2 {
     font-weight: 600;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 }
 
 h3 {
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
 }
 
 h4 {
@@ -62,9 +63,14 @@ p {
     font-weight: 200;
 } 
 
+a {
+    text-decoration: none;
+
+}
+
 button {
     width: max-content;
-    padding: 1.5rem;
+    padding: 1.2rem;
     font-size: 1.6rem;
     border: none;
     border-radius: 3rem;
@@ -80,10 +86,24 @@ button {
     color: black;
 }
 
+.button-filled:hover {
+    border: none;
+    border: 2px solid #c67400;
+    background-color: #c67400;
+    color: black;
+    transition: 0.4s ease-in-out;
+}
 .button-empty {
     border: 2px solid var(--col5);
     background-color: rgba(255, 255, 255, 0.705);
     color: var(--col5);
+}
+
+.button-empty:hover {
+    background-color: var(--col5);
+  
+    color: rgba(255, 255, 255, 0.884);
+    transition: 0.4s ease-in-out;
 }
 
 section:not(.numbers, .advantages), .header-wrapper {
@@ -171,7 +191,6 @@ section {
 .header-title {
     margin-bottom: 3rem;
     margin-left: 2rem;
- 
 }
 
 .header-buttons {
@@ -217,7 +236,6 @@ section {
 
 .about-descr>p {
     text-align: center;
-    font-size: 1.8rem;
 }
 
 .section-title {
@@ -225,7 +243,6 @@ section {
     font-size: 5rem;
     text-align: center;
     min-width: fit-content;
-
     margin-bottom: 5rem;
     margin-top: 5rem;
 }
@@ -427,8 +444,8 @@ section {
 .numbers {
     display: block;
     margin: auto;
-    min-height: 26rem;
     margin-top: 5rem;
+    padding: 2rem 0;;
     background-color: var(--col1)
 }
 
@@ -463,6 +480,7 @@ section {
     display: block;
     height: 10rem;
     flex:1;
+    font-size: 1.8rem;
     
 }
 
@@ -556,7 +574,7 @@ svg {
     margin-left: 3rem;
     margin-right: 3rem;
     color: rgb(31, 31, 31);
-    border-top: 1px solid rgb(39, 71, 73);
+    border-top: 1px solid rgb(204, 204, 204);
     min-height: 4rem;
 }
 
@@ -610,26 +628,24 @@ svg {
     
 
     .header-logo {
-        font-size: 7rem;
+        font-size: 4rem;
     }
 
     h1 {
-        font-size: 5rem;
-        line-height: normal;
-    }
-
-    h2 {
-        font-weight: 600;
         font-size: 3.2rem;
+        line-height: 4rem;
     }
-
+    
+    h2 {
+        font-size: 2.6rem;
+    }
+    
     h3 {
-        font-weight: 400;
-        font-size: 2.8rem;
-    }
-
-    h4 {
         font-size: 2.2rem;
+    }
+    
+    h4 {
+        font-size: 1.8rem; 
     }
     
     .about-descr>p {
@@ -642,7 +658,7 @@ svg {
         height: 15rem;
     }
 
-       .left {
+    .left {
         left: 2%;
         bottom: 40%;
     }
@@ -655,12 +671,35 @@ svg {
 }
 
 @media screen and (min-width: 420px) {
+    h1 {
+        font-size: 3.6rem;
+        line-height: 5rem;
+    }
+    
+    h2 {
+        font-size: 2.8rem;
+    }
+    
+    h3 {
+        font-size: 2.4rem;
+    }
+    
+    h4 {
+        font-size: 2rem; 
+    }
+
+    .offer-descr>p {
+        font-size: 1.8rem;
+    }
+
+    .about-descr>p {
+        font-size: 1.8rem;
+    }
 
     .header-buttons {
         flex-direction: row;
     }
     
- 
     .card-descr {
         display: flex;
         flex-direction: column;
@@ -671,7 +710,6 @@ svg {
     }
 
     .header-title-container {
-
         padding-bottom: 15rem;
     }
 
@@ -720,12 +758,12 @@ svg {
     
     
     .header-logo {
-        font-size: 8rem;
+        font-size: 6rem;
         transform: translateY(var(--y));
     }
 
     h1 {
-        font-size: 5rem;
+        font-size: 4rem;
     }
 }
 
