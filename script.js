@@ -214,3 +214,17 @@ function counterSection() {
     observerNum.observe(numbers);
 
 
+const body = document.querySelector("body");
+const showPortfolioBtn = document.querySelector(".portfolio-button");
+showPortfolioBtn.addEventListener("click", () => {
+    portfolioCard.style.display="block";
+    body.classList.toggle("blur");
+   
+})
+
+const closePortfolioBtn = document.querySelector(".portfolio-all-close");
+const portfolioCard = document.querySelector(".portfolio-all");
+closePortfolioBtn.addEventListener("click", () => {
+    portfolioCard.style.display="none";
+    body.classList.toggle("blur");
+})

@@ -1,7 +1,6 @@
 :root {
 --y: 1px;
 --img: -1px;
---header-heigth: 80vh;
 --cards: 4;
 --num: 5;
 --col1: #81b4be;
@@ -31,6 +30,11 @@ body {
     -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
+body.blur > :not(.portfolio-all) {
+    filter: blur(8px);
+}
+
+
 h1 {
     font-weight: 600;
     font-size: 2.6rem;
@@ -58,7 +62,7 @@ h5 {
     font-size: 1.8rem;
 }
 
-p {
+p, li {
     font-size: 1.6rem;
     font-weight: 200;
 } 
@@ -137,13 +141,14 @@ section {
 }
 
 .header {
-    height: 100vh;
+    height: 75vh;
     width: 100%;
-    background-image: url(./img/linia.jpg);
+    background-image:  linear-gradient(to bottom, rgba(245, 246, 252, 0), rgb(255, 255, 255)), url(./img/linia.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
+
 
 .header-wrapper {
     display: flex;
@@ -166,11 +171,10 @@ section {
 .header-logo {
     display: block;
     position: absolute;
-    top: 5rem;
+    top: 4.5rem;
     font-size: 5rem;
     font-weight: 600;
     color: white;
-    transition: 0.1s linear;
     line-height: 6rem;
     transform: none;
 }
@@ -182,16 +186,29 @@ section {
 .header-title-container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
+    align-items: flex-end;
     height: 100%;
     padding-bottom: 3rem;
-    text-align: right;
 }
 
 .header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
     margin-bottom: 3rem;
     margin-left: 2rem;
+    text-align: right;
 }
+
+.header-title >h1 {
+    max-width: 30rem; 
+}
+
+.header-title >h4 {
+    line-height: 2.5rem;
+}
+
 
 .header-buttons {
     display: flex;
@@ -231,13 +248,21 @@ section {
 .about-descr {
     max-width: 100rem;
     margin: 0 auto;
-
 }
 
 .about-descr>p {
     text-align: center;
 }
 
+.about-descr>ul {
+    padding-inline-start: 5rem;
+    margin-bottom: 2rem;
+}
+
+.about-descr>h5{
+    text-align: center;
+    margin-top: 1rem;
+}
 
 .logos-container {
     display: flex;
@@ -266,7 +291,10 @@ section {
 }
 
 .logos-container:hover .logos-slide {
-    animation-play-state: paused;
+    -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused;
+    animation-play-state:paused;
 }
 
 
@@ -485,6 +513,56 @@ section {
 }
 
 
+.portfolio-all {
+    display: none;
+    background-color: white;
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    padding: 2rem 0;
+    margin: 0 auto;
+    width: 90vw;
+    z-index: 99999;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 2rem;
+    overflow: auto;
+    height: 90vh;
+  
+}
+
+.portfolio-all-txt > h2 {
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+
+.portfolio-all-close {
+    position: absolute;
+    text-align: center;
+    top: 2rem;
+    right: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #81b4be;
+    cursor: pointer;
+}
+
+.portfolio-all-close:hover {
+    background-color: #81b4be8a;
+}
+
+.portfolio-all-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.portfolio-all-list {
+    padding: 0 4rem;
+} 
+
+
 .numbers {
     display: block;
     margin: auto;
@@ -627,6 +705,10 @@ svg {
     min-height: 4rem;
 }
 
+.footer-bottom >p {
+    font-size: 1.2rem;
+}
+
 .footer-address {
     display: block;
     width: 80%;
@@ -647,6 +729,7 @@ svg {
 
 .a-email {
     color: black;
+    text-decoration: underline;
 }
 
 .a-email:hover {
@@ -745,6 +828,11 @@ svg {
         font-size: 1.8rem;
     }
 
+    .about-descr>ul>li {
+        font-size: 1.8rem;
+    }
+
+
     .header-buttons {
         flex-direction: row;
     }
@@ -753,13 +841,8 @@ svg {
         display: flex;
         flex-direction: column;
         padding: 2rem;
-
         min-height: 20rem;
     
-    }
-
-    .header-title-container {
-        padding-bottom: 15rem;
     }
 
     .count:is(div) {
@@ -797,6 +880,22 @@ svg {
     .footer-wrap {
         flex-direction: row;
     }
+
+    
+    .header-title-container {
+        padding-bottom: 15rem;
+    }
+
+}
+
+@media screen and (min-width: 770px) {
+
+
+    .header-title >h1 {
+        max-width: 50rem; 
+    }
+
+
 }
 
 
@@ -806,9 +905,8 @@ svg {
     }
 
     .header {
-        height: var(--header-heigth);
+        height: 70vh;
     }
-    
     
     .header-logo {
         font-size: 6rem;
