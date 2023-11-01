@@ -1,8 +1,5 @@
 :root {
 --y: 1px;
---img: -1px;
---cards: 4;
---num: 5;
 --col1: #81b4be;
 --col2: #489fb5;
 --col3: #ffa62b;
@@ -27,13 +24,12 @@ body {
     margin: 0px;
     box-sizing: border-box;
     position: relative;
-    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
 }
 
 body.blur > :not(.portfolio-all) {
     filter: blur(8px);
 }
-
 
 h1 {
     font-weight: 600;
@@ -54,7 +50,7 @@ h3 {
 
 h4 {
     font-weight: 400;
-    font-size: 1.8rem; 
+    font-size: 2rem; 
 }
 
 h5 {
@@ -69,7 +65,6 @@ p, li {
 
 a {
     text-decoration: none;
-
 }
 
 button {
@@ -92,8 +87,8 @@ button {
 
 .button-filled:hover {
     border: none;
-    border: 2px solid #c67400;
-    background-color: #c67400;
+    border: 2px solid #ffbd60;
+    background-color: #ffbd60;
     color: black;
     transition: 0.4s ease-in-out;
 }
@@ -105,7 +100,6 @@ button {
 
 .button-empty:hover {
     background-color: var(--col5);
-  
     color: rgba(255, 255, 255, 0.884);
     transition: 0.4s ease-in-out;
 }
@@ -128,7 +122,6 @@ section {
     transition: sectionAnimate ease-in 0.5s;
 }
 
-
 @keyframes sectionAnimate {
     from {
         transform: translateY(50rem);
@@ -140,15 +133,17 @@ section {
     }
 }
 
+
+/* HEADER */
+
 .header {
     height: 75vh;
     width: 100%;
-    background-image:  linear-gradient(to bottom, rgba(245, 246, 252, 0), rgb(255, 255, 255)), url(./img/linia.jpg);
+    background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgb(255, 255, 255)), url(./img/linia.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-
 
 .header-wrapper {
     display: flex;
@@ -168,11 +163,32 @@ section {
     width: 100%;
 }
 
+.header-nav-mobile {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: white;
+    z-index: 99999;
+}
+
+.header-nav-mobile-close {
+    position: absolute;
+    top: 5rem;
+    right: 5rem;
+    cursor: pointer;
+}
+
 .header-logo {
     display: block;
     position: absolute;
     top: 4.5rem;
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 600;
     color: white;
     line-height: 6rem;
@@ -181,6 +197,26 @@ section {
 
 .header-logo.black {
     color: black;
+}
+
+.header-hamburger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4.5rem;
+    right: 4rem;
+    height: 6rem;
+    width: 6rem;
+    line-height: 6rem;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.header-hamburger > svg {
+    display: block;
+    height: 80%;
+    width: 80%;
 }
 
 .header-title-container {
@@ -205,10 +241,9 @@ section {
     max-width: 30rem; 
 }
 
-.header-title >h4 {
+.header-title > h4 {
     line-height: 2.5rem;
 }
-
 
 .header-buttons {
     display: flex;
@@ -222,16 +257,22 @@ section {
     display: inline-block;
     width: max-content;
     padding: 2rem;
+    list-style: none;
 }
 
-.header-nav > li > a {
+.header-nav > li > a, .header-nav-mobile-list > li > a {
     text-decoration: none;
     color: black;
     font-weight: 800;
     font-size: 2.4rem;
+    
+}
+.header-nav-mobile-list {
+    list-style: none;
+    text-align: center;
 }
 
-.header-nav > li >a:hover {
+.header-nav > li > a:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.939);
     text-decoration: underline;
@@ -239,6 +280,15 @@ section {
     transition: color 0.15s ease-in-out;
 } 
 
+.header-nav-mobile-list > li > a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.8rem;
+    transition: color 0.15s ease-in-out;
+} 
+
+
+/* ABOUT */
 
 .about {
     display: block;
@@ -247,14 +297,15 @@ section {
 
 .about-descr {
     max-width: 100rem;
+    user-select: none;
     margin: 0 auto;
 }
 
-.about-descr>p {
+.about-descr > p {
     text-align: center;
 }
 
-.about-descr>ul {
+.about-descr > ul {
     padding-inline-start: 5rem;
     margin-bottom: 2rem;
 }
@@ -297,7 +348,6 @@ section {
     animation-play-state:paused;
 }
 
-
 @keyframes logos {
     from {
         transform: translateX(0%);
@@ -306,7 +356,6 @@ section {
     to {
         transform: translateX(-100%);
     }
-    
 }
 
 .section-title {
@@ -330,10 +379,12 @@ section {
     margin-right: auto;
 }
 
-
 .portfolio-title:after {
     width: 20rem;
 }
+
+
+/* OFFER */
 
 .offer {
     display: block;
@@ -341,7 +392,6 @@ section {
     margin: auto;
     height: min-content;
 }
-
 
 .offer-row {
     display: flex;
@@ -361,13 +411,12 @@ section {
     padding: 3rem 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     border-radius: 2rem;
+    user-select: none;
 }
 
 .offer-descr > h4 { 
- 
    line-height: 3rem;
    margin-bottom: 1rem;
-
 }
 
 .offer-img {
@@ -380,18 +429,14 @@ section {
     width: 10rem;
     padding: 2rem;
     border: 4px solid var(--col1);
-
     border-radius: 100%;
 }
-
 
 .portfolio {
     display: block;
     text-align: center;
     position: relative;
     padding-bottom: 3rem;
- 
- 
 }
 
 .portfolio-button {
@@ -399,7 +444,6 @@ section {
     margin: 2rem auto;
     text-align: center;
 }
-
 
 .slider-container {
     display: block;
@@ -410,7 +454,6 @@ section {
     height: 100%;
 }
 
-
 .slider-wrap {
     display: block;
     width: 60vw;
@@ -418,7 +461,6 @@ section {
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    
 }
 
 .slider {
@@ -429,7 +471,6 @@ section {
     width: max-content;
     transition: all 1s ease;
     z-index: 0;
-
 }
 
 .card {
@@ -440,18 +481,6 @@ section {
     align-items: center;
     width: 60vw;
 }
-
-/* .slider-container::before {
-    content: "";
-    position: absolute;
-    width:  100%;
-    max-width: 90rem;
-    height: 100%;
-    border-radius: 2rem;
-    background-color:#81b4be62;
-    z-index: -1;
-    box-shadow: rgba(0, 0, 0, 0.137) 0px 3px 6px;
-} */
 
 .card-img {
     height: 13rem;
@@ -481,15 +510,12 @@ section {
     font-size: 4rem;
     color: var(--col1);
     position: absolute;
-    /* border: 3px solid var(--col1); */
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
     cursor: pointer;
     text-align: center;
     z-index: 9999;
-    /* box-shadow: rgba(0, 0, 0, 0.062) 0px 3px; */
-
 }
 
 .left {
@@ -502,16 +528,10 @@ section {
     top:50%;
 }
 
-
 .nav-btn > p {
     font-size: 5rem;
     transform: translateY(-1.8rem);
 }
- 
-#count-coffee::before {
-    content: ">"
-}
-
 
 .portfolio-all {
     display: none;
@@ -526,8 +546,7 @@ section {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     border-radius: 2rem;
     overflow: auto;
-    height: 90vh;
-  
+    height: 80vh;
 }
 
 .portfolio-all-txt > h2 {
@@ -554,14 +573,18 @@ section {
 .portfolio-all-txt {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    width: 80%;
 }
 
-
 .portfolio-all-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 0 4rem;
 } 
-
 
 .numbers {
     display: block;
@@ -603,21 +626,20 @@ section {
     height: 10rem;
     flex:1;
     font-size: 1.8rem;
-    
 }
 
 .num {
     flex:1;
 }
 
-svg {
+.count-svg {
     height: 2rem;
 }
-
-
-
+ 
+#count-coffee::before {
+    content: ">"
+}
 /*ADVANTAGES*/
-
 
 .advantages {
     display: block;
@@ -660,8 +682,6 @@ svg {
     font-size: 1.8rem;
     padding: 2rem 0;
 }
-
-
 
 /* FOOTER */
 
@@ -751,14 +771,12 @@ svg {
     margin-right: 0;
 }
 
-
 @media screen and (min-width: 320px) {
 
     .portfolio-button {
         width: 25rem;
     }
     
-
     .header-logo {
         font-size: 6rem;
     }
@@ -783,11 +801,11 @@ svg {
     .about-descr>p {
         text-indent: 4rem;
         text-align: justify;
-      
     }
 
     .card-img {
         height: 15rem;
+        width: 90%;
     }
 
     .left {
@@ -799,7 +817,6 @@ svg {
         right: 2%;
         bottom: 40%;
     }
-    
 }
 
 @media screen and (min-width: 420px) {
@@ -832,7 +849,6 @@ svg {
         font-size: 1.8rem;
     }
 
-
     .header-buttons {
         flex-direction: row;
     }
@@ -842,7 +858,6 @@ svg {
         flex-direction: column;
         padding: 2rem;
         min-height: 20rem;
-    
     }
 
     .count:is(div) {
@@ -852,10 +867,8 @@ svg {
     .card-img {
         height: 18rem;
         min-width: 16rem;
-       }
-    
+    }
 }
-
 
 @media screen and (min-width: 550px) {
 
@@ -870,7 +883,7 @@ svg {
 
     .card-img {
         height: 25rem;
-       }
+    }
 
     .slider-wrap::before {
         height: 35rem;
@@ -880,7 +893,6 @@ svg {
     .footer-wrap {
         flex-direction: row;
     }
-
     
     .header-title-container {
         padding-bottom: 15rem;
@@ -890,14 +902,11 @@ svg {
 
 @media screen and (min-width: 770px) {
 
-
     .header-title >h1 {
         max-width: 50rem; 
     }
 
-
 }
-
 
 @media screen and (min-width: 900px) {
     .header-nav {
@@ -915,6 +924,10 @@ svg {
 
     h1 {
         font-size: 4rem;
+    }
+
+    .header-hamburger {
+        opacity: 0;
     }
 }
 
@@ -943,6 +956,5 @@ svg {
         height: 30rem;
         margin-top:5rem;
     }
-
 }
  

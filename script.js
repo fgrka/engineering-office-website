@@ -1,13 +1,8 @@
-const headerLogo = document.querySelector(".header-logo");
-const header = document.querySelector(".header");
-const aboutTitle = document.querySelector(".about .section-title");
-const about = document.querySelector(".about");
-const offerTitle = document.querySelector(".offer .section-title");
-const offer = document.querySelector(".offer"); 
-const portfolioTitle = document.querySelector(".portfolio .section-title");
-const footer = document.querySelector(".footer-main");
-
 class Logo {
+    constructor(headerLogo, header) {
+        this.headerLogo = headerLogo;
+        this.header = header;
+    }
     logoColour() {
         const observerOptColour = {
             root: null, 
@@ -26,13 +21,11 @@ class Logo {
         
             })
         }, observerOptColour);
-    
         observerLogoColour.observe(header);
-    
     }
+
     moveLogo() {
         window.addEventListener("scroll", moveRange);
-        
              function moveRange() {
                 let aboutTitlePosition= header.offsetHeight+15;
                 let moveY = window.scrollY;
@@ -45,10 +38,11 @@ class Logo {
         this.logoColour();
         this.moveLogo();
     }
-
 }
 
-const logo = new Logo();
+const header = document.querySelector(".header");
+const headerLogo = document.querySelector(".header-logo");
+const logo = new Logo(headerLogo,header);
 logo.init();
 
 function showSections() {
@@ -64,47 +58,53 @@ function showSections() {
             if (el.isIntersecting) {
                 setTimeout(()=>{el.target.classList.add("visible")}, 400)
             }
-
         })
     }, observerOptSections);
 
     sections.forEach((sec) =>{
         observerSections.observe(sec);
-
     })
 }
 showSections();
 
 function navLinks() {
-    const aAbout = document.querySelector(".a-about");
-    const aOffer = document.querySelector(".a-offer");
-    const aPortfolio = document.querySelector(".a-portfolio");
-    const aContact = document.querySelector(".a-contact");
+    const aAbout = document.querySelectorAll(".a-about");
+    const aOffer = document.querySelectorAll(".a-offer");
+    const aPortfolio = document.querySelectorAll(".a-portfolio");
+    const aContact = document.querySelectorAll(".a-contact");
+    const aboutTitle = document.querySelector(".about .section-title");
+    const offerTitle = document.querySelector(".offer .section-title");
+    const portfolioTitle = document.querySelector(".portfolio .section-title");
+    const footer = document.querySelector(".footer-main");
 
-    aAbout.addEventListener("click", (e) => {
-        e.preventDefault();
-        aboutTitle.scrollIntoView({block: "start", behavior: "smooth"});
+    aAbout.forEach(el => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            aboutTitle.scrollIntoView({block: "start", behavior: "smooth"});
+        })
+    });
 
+    aOffer.forEach(el => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            offerTitle.scrollIntoView({block: "start", behavior: "smooth"});
+        })
+    });
+
+    aPortfolio.forEach(el => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            portfolioTitle.scrollIntoView({block: "start", behavior: "smooth"});
+        })
+    });
+
+
+    aOffer.forEach(el => {
+        el.addEventListener("click", () => {
+            e.preventDefault();
+            offerTitle.scrollIntoView({block: "start", behavior: "smooth"});
+        })
     })
-
-    aOffer.addEventListener("click", (e) => {
-        e.preventDefault();
-        offerTitle.scrollIntoView({block: "start", behavior: "smooth"});
-
-    })
-
-    aPortfolio.addEventListener("click", (e) => {
-        e.preventDefault();
-        portfolioTitle.scrollIntoView({block: "start", behavior: "smooth"});
-
-    })
-
-    aContact.addEventListener("click", (e) => {
-        e.preventDefault();
-        footer.scrollIntoView({block: "start", behavior: "smooth"});
-
-    })
-
 }
 navLinks();
 
@@ -121,19 +121,19 @@ const moveRight = () => {
     if (isTransitionEnd) {
     isTransitionEnd=false;    
     const firstItem = slider.children[0];
-    slider.appendChild(firstItem.cloneNode(true));
     slider.style.transition = 'transform 1s ease-in-out';
     slider.style.transform = `translateX(-${firstItem.offsetWidth}px)`;
 
     const transitionEndHandler = () => {
         slider.style.transition = 'none';
         slider.style.transform = 'translateX(0)';
+        slider.appendChild(firstItem.cloneNode(true));
         slider.removeChild(slider.children[0]);
         slider.removeEventListener('transitionend', transitionEndHandler);
     };
     slider.addEventListener('transitionend', transitionEndHandler);
-    setTimeout(()=> {isTransitionEnd=true;}, 1100);
-}
+    setTimeout(()=> {isTransitionEnd = true;}, 1000);
+    }
 }
 
 const moveLeft = () => {
@@ -143,18 +143,19 @@ const moveLeft = () => {
     const lastItem = slider.children[slider.children.length-1];
     slider.style.transition = "transform 1s ease-in-out"
     slider.style.transform = `translateX(${lastItem.offsetWidth}px)`;
-  
-    setTimeout(()=> { slider.insertBefore(lastItem.cloneNode(true), slider.firstChild);
-    }, 1000);
 
     const transitionEndHandler = () => {
         slider.style.transition = 'none';
         slider.style.transform = 'translateX(0)';
+        slider.insertBefore(lastItem.cloneNode(true), slider.firstChild);
         slider.removeChild(lastItem);
         slider.removeEventListener('transitionend', transitionEndHandler);
     };
     slider.addEventListener('transitionend', transitionEndHandler);
-    setTimeout(()=> {isTransitionEnd=true;}, 1100);
+    
+    setTimeout(()=> {
+        isTransitionEnd = true;
+    }, 1000);
     }
 };
 
@@ -201,7 +202,6 @@ function counterSection() {
         rootMargin: "400px",
         threshold: 0.2,
     };
-    console.log(numbers)
     const observerNum = new IntersectionObserver(elements => {
         elements.forEach((el) => {
             if (el.isIntersecting) {
@@ -228,3 +228,24 @@ closePortfolioBtn.addEventListener("click", () => {
     portfolioCard.style.display="none";
     body.classList.toggle("blur");
 })
+
+//HAMBUGER VISIBILITY
+
+const mobileMenu = document.querySelector(".header-nav-mobile");
+const closeMobileMenu = document.querySelector(".header-nav-mobile-close");
+const hamburgerIcon = document.querySelector(".header-hamburger");
+
+
+closeMobileMenu.addEventListener("click", () => {
+mobileMenu.style.display = "none"})
+
+hamburgerIcon.addEventListener("click", () => {
+    mobileMenu.style.display = "flex";
+})
+
+
+const mobileMenuLinks = document.querySelectorAll(".header-nav-mobile a");
+mobileMenuLinks.forEach( link => 
+    link.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+    }))
