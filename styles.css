@@ -85,24 +85,31 @@ button {
     color: black;
 }
 
-.button-filled:hover {
-    border: none;
-    border: 2px solid #ffbd60;
-    background-color: #ffbd60;
-    color: black;
-    transition: 0.4s ease-in-out;
-}
 .button-empty {
     border: 2px solid var(--col5);
     background-color: rgba(255, 255, 255, 0.705);
     color: var(--col5);
 }
 
-.button-empty:hover {
-    background-color: var(--col5);
-    color: rgba(255, 255, 255, 0.884);
-    transition: 0.4s ease-in-out;
+@media (hover: hover) {
+
+    .button-filled:hover {
+        border: none;
+        border: 2px solid #ffbd60;
+        background-color: #ffbd60;
+        color: black;
+        transition: 0.4s ease-in-out;
+    }
+
+    .button-empty:hover {
+        background-color: var(--col5);
+        color: rgba(255, 255, 255, 0.884);
+        transition: 0.4s ease-in-out;
+    }
+    
+
 }
+
 
 section:not(.numbers, .advantages), .header-wrapper {
     max-width: 120rem;
@@ -188,7 +195,7 @@ section {
     display: block;
     position: absolute;
     top: 4.5rem;
-    font-size: 6rem;
+    font-size: 4rem;
     font-weight: 600;
     color: white;
     line-height: 6rem;
@@ -342,10 +349,14 @@ section {
 }
 
 .logos-container:hover .logos-slide {
-    -webkit-animation-play-state:paused;
-    -moz-animation-play-state:paused;
-    -o-animation-play-state:paused;
     animation-play-state:paused;
+}
+
+@media (hover: none) {
+    .logos-container:hover .logos-slide {
+        animation-play-state:running;
+    }
+    
 }
 
 @keyframes logos {
@@ -778,7 +789,7 @@ section {
     }
     
     .header-logo {
-        font-size: 6rem;
+        font-size: 5rem;
     }
 
     h1 {
