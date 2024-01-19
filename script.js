@@ -105,6 +105,13 @@ function navLinks() {
             offerTitle.scrollIntoView({block: "start", behavior: "smooth"});
         })
     })
+
+    aContact.forEach(el => {
+        el.addEventListener("click", () => {
+            e.preventDefault();
+            footer.scrollIntoView({block: "start", behavior: "smooth"});
+        })
+    })
 }
 navLinks();
 
